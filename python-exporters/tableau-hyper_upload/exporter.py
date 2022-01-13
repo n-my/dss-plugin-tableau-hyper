@@ -117,7 +117,7 @@ class TableauHyperExporter(Exporter):
         self.writer = TableauTableWriter(schema_name=self.schema_name, table_name=self.table_name)
         # Open connection to Tableau Server
         self.tableau_auth = tsc.PersonalAccessTokenAuth(token_name, token_value, site_id=site_name)
-        self.server = tsc.Server(server_name)
+        self.server = tsc.Server(server_name, use_server_version=True)
         if self.ignore_ssl:
             self.server.add_http_options({'verify': False})
             logger.info("HTTP client is ignoring SSL check.")

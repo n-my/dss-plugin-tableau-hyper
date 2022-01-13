@@ -122,7 +122,7 @@ class TableauHyperExporter(Exporter):
             self.server.add_http_options({'verify': False})
             logger.info("HTTP client is ignoring SSL check.")
 
-        logger.info(self.server.version)
+        logger.info("Tableau REST API version {}".format(self.server.version))
 
         # Retrieve target project from Tableau Server/Online
         with self.server.auth.sign_in(self.tableau_auth):

@@ -97,15 +97,15 @@ def get_project_full_path(project, all_projects):
 
 
 def get_tableau_server_connection(config):
-    server_url = username = password = site_id = None
+    server_url = token_name = token_value = site_id = None
     use_preset = config.get('usePreset', False)
     if use_preset:
         configuration = config.get('tableau_server_connection', {})
     else:
         configuration = config
     server_url = configuration.get('server_url', None)
-    username = configuration.get('username', None)
-    password = configuration.get('password', None)
+    token_name = configuration.get('token_name', None)
+    token_value = configuration.get('token_value', None)
     site_id = configuration.get('site_id', '')
 
     ssl_cert_path = configuration.get('ssl_cert_path', None)
@@ -119,4 +119,4 @@ def get_tableau_server_connection(config):
             os.environ['REQUESTS_CA_BUNDLE'] = ssl_cert_path
             os.environ['CURL_CA_BUNDLE'] = ssl_cert_path
 
-    return server_url, username, password, site_id, ignore_ssl
+    return server_url, token_name, token_value, site_id, ignore_ssl
